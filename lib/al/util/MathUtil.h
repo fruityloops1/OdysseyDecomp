@@ -19,4 +19,6 @@ namespace al
     float powerOut(float, float);
 
     float lerpValue(float, float, float);
+
+    float calcRate01(float, float, float);
 };
