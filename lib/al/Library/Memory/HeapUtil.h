@@ -30,4 +30,6 @@ void destroyWorldResourceHeap(bool removeCategory);
 void loadPlayerResource(const char* categoryName);
 void freePlayerResource(const char* categoryName);
 void setAudioResourceDirectorToMemorySystem(AudioResourceDirector* audioResourceDirector);
+sead::Heap* getCurrentHeap();
+
 }  // namespace al

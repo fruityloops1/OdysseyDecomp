@@ -3,6 +3,7 @@
 #include <container/seadStrTreeMap.h>
 #include <heap/seadExpHeap.h>
 #include <heap/seadHeapMgr.h>
+#include "heap/seadFrameHeap.h"
 
 namespace al {
 class AudioResourceDirector;
@@ -35,7 +36,7 @@ public:
 
     sead::ExpHeap* getSceneResourceHeap() { return mSceneResourceHeap; }
 
-    sead::ExpHeap* getSceneHeap() { return mSceneHeap; }
+    sead::FrameHeap* getSceneHeap() { return mSceneHeap; }
 
     sead::ExpHeap* getPlayerResourceHeap() { return mPlayerResourceHeap; }
 
@@ -55,7 +56,7 @@ private:
     sead::ExpHeap* mStationedHeap;
     sead::ExpHeap* mSequenceHeap;
     sead::ExpHeap* mSceneResourceHeap;
-    sead::ExpHeap* mSceneHeap;
+    sead::FrameHeap* mSceneHeap;
     sead::ExpHeap* mPlayerResourceHeap;
     sead::ExpHeap* mCourseSelectResourceHeap;
     sead::ExpHeap* mCourseSelectHeap;
