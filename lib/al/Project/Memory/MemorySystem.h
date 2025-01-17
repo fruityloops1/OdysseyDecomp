@@ -2,8 +2,8 @@
 
 #include <container/seadStrTreeMap.h>
 #include <heap/seadExpHeap.h>
+#include <heap/seadFrameHeap.h>
 #include <heap/seadHeapMgr.h>
-#include "heap/seadFrameHeap.h"
 
 namespace al {
 class AudioResourceDirector;
@@ -25,8 +25,8 @@ public:
     void createWorldResourceHeap();
     void destroyWorldResourceHeap();
     void freeAllPlayerHeap();
-    sead::Heap* tryFindNamedHeap(const char* heapName);
-    sead::Heap* findNamedHeap(const char* heapName);
+    sead::Heap* tryFindNamedHeap(const char* heapName) const;
+    sead::Heap* findNamedHeap(const char* heapName) const;
     void addNamedHeap(sead::Heap* heap, const char* heapName);
     void removeNamedHeap(const char* heapName);
 
@@ -65,6 +65,9 @@ private:
     AudioResourceDirector* mAudioResourceDirector;
     bool mIsExistFileResource;
     sead::Delegate1<MemorySystem, const sead::HeapMgr::AllocFailedCallbackArg*> mDelegate;
+
+    static constexpr size_t cDefaultSceneHeapSize = 490 * 1024 * 1024 /* 490 MB */;
+    static constexpr size_t cWorldResourceHeapSize = 855 * 1024 * 1024 /* 855 MB */;
 };
 
 static_assert(sizeof(MemorySystem) == 0x90);
