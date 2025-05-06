@@ -1,5 +1,6 @@
 #pragma once
 
+#include <math/seadMatrix.h>
 #include <math/seadQuat.h>
 #include <math/seadVector.h>
 
@@ -26,4 +27,18 @@ void attachMtxConnectorToJoint(MtxConnector* mtxConnector, const LiveActor* acto
                                const sead::Vector3f& trans);
 void disconnectMtxConnector(MtxConnector* mtxConnector);
 bool isMtxConnectorConnecting(const MtxConnector* mtxConnector);
+
+class CollisionPartsConnector /*: public MtxConnector*/ {
+public:
+    CollisionPartsConnector();
+
+    void init(sead::Matrix34f* outMtx, const sead::Matrix34f& inMtx,
+              const CollisionParts* collisionParts);
+    void* getConnectingSensor() const;
+    bool isConnecting() const;
+    bool isMoved() const;
+    bool isConnectInvalidCollision() const;
+    void clear();
+};
+
 }  // namespace al
